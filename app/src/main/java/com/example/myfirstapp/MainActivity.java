@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.text.TextUtils;
-import android.view.Display;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +12,22 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner_Options;
+
     //DatePicker variables
     private TextView datePicker_Object;
     private DatePickerDialog.OnDateSetListener datePicker_Dialog;
+
     //validations variables
     public static EditText name_Field, lastName_Field;
     public static Spinner gender;
+    public static RadioButton yes_Radio_button;
+    public static RadioButton no_Radio_button;
+    public static CheckBox java_Option_checkBox;
+    public static CheckBox python_Option_checkBox;
+    public static CheckBox js_Option_checkBox;
+    public static CheckBox golang_Option_checkBox;
+    public static CheckBox c_Plus_option_CheckBox;
+    public static CheckBox c_Sharp_option_checkBox;
 
     //onSend click
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
@@ -68,14 +77,54 @@ public class MainActivity extends AppCompatActivity {
         name_Field = findViewById(R.id.name);
         lastName_Field= findViewById(R.id.lastName);
         gender = findViewById(R.id.spinner);
+        yes_Radio_button = findViewById(R.id.radioButton4);
+        no_Radio_button = findViewById(R.id.radioButton6);
+        java_Option_checkBox = findViewById(R.id.javaCheckBox);
+        python_Option_checkBox = findViewById(R.id.pythonCheckBox);
+        js_Option_checkBox = findViewById(R.id.jsCheckBox);
+        golang_Option_checkBox = findViewById(R.id.golangCheckBox);
+        c_Plus_option_CheckBox = findViewById(R.id.c_Plus_checkBox);
+        c_Sharp_option_checkBox = findViewById(R.id.c_Sharp_checkBox);
+
+        if(!yes_Radio_button.isChecked()){
+            yes_Radio_button.setChecked(true);
+        }
+        no_Radio_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(no_Radio_button.isChecked()){
+                    java_Option_checkBox.setEnabled(false);
+                    python_Option_checkBox.setEnabled(false);
+                    js_Option_checkBox.setEnabled(false);
+                    golang_Option_checkBox.setEnabled(false);
+                    c_Plus_option_CheckBox.setEnabled(false);
+                    c_Sharp_option_checkBox.setEnabled(false);
+                }
+            }
+        });
+        yes_Radio_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(yes_Radio_button.isChecked()){
+                    java_Option_checkBox.setEnabled(true);
+                    python_Option_checkBox.setEnabled(true);
+                    js_Option_checkBox.setEnabled(true);
+                    golang_Option_checkBox.setEnabled(true);
+                    c_Plus_option_CheckBox.setEnabled(true);
+                    c_Sharp_option_checkBox.setEnabled(true);
+                }
+            }
+        });
+
+
 
     }
 
     public String fields_Validations(){
-        //Accesing to the erro method
+        //To have access to the spinner error method using a TextView
         gender_view_value = (TextView) gender.getSelectedView();
+        //Accesing to the string value of the selected opcion in the spinner
         gender_string_value = gender.getSelectedItem().toString();
-        //System.out.println(gender_string_value);
 
         String status = "notEmpty";
         name_Field_validation = name_Field.getText().toString();
@@ -100,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
     //Send filled information to a second activity
     public void send_Filled_data(View send_Button){
         Intent send_intent = new Intent(this, DisplayDataActivity.class);
-        //String get_Namefield_Value =name_Field.getText().toString();
         if(fields_Validations().equals("notEmpty")){
             send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
             startActivity(send_intent);
@@ -110,13 +158,41 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void change_Values_radios(View change_Value_Rb){
+        if(yes_Radio_button.isChecked()){
+            no_Radio_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    yes_Radio_button.setChecked(false);
+
+                }
+
+            });
+        }
+        if(no_Radio_button.isChecked()){
+
+            yes_Radio_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    no_Radio_button.setChecked(false);
+                }
+
+            });
+
+        }
+
+
 
     }
 
 
-    //TODO:Send Button action
+    //TODO:Radio Buttons Validations (In process)
+    //TODO: check boxes desactivation when clicked no spinner option is pressed
     //TODO:Clear screen
     //TODO: change application color
+    //TODO: change application text size
 
 
 
