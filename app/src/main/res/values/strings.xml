@@ -16,5 +16,6 @@
     <string name="c_sharp">C#</string>
     <string name="Send">ENVIAR</string>
     <string name="Clear">LIMPIAR</string>
+    <string name="select_datepicker">seleccionar fecha...</string>
 
 </resources>
