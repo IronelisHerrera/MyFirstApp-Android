@@ -33,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE_LASTNAME = "lastName";
     public static final String EXTRA_MESSAGE_GENDER = "Gender";
+    public static final String EXTRA_MESSAGE_BIRTH_DATE = "birthDate";
 
     public static TextView gender_view_value;
     public static String gender_string_value;
     public static String name_Field_validation;
     public static String lastName_Field_validation;
+    public static String birth_Date_String_value;
     public static boolean yes_Final_value;
     public static boolean java_Final_value;
     public static boolean python_Final_value;
@@ -135,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
         gender_view_value = (TextView) gender.getSelectedView();
         //Accesing to the string value of the selected opcion in the spinner
         gender_string_value = gender.getSelectedItem().toString();
+
+
         //Accesing checkboxes final value
         yes_Final_value = yes_Radio_button.isChecked();
 
@@ -200,9 +204,11 @@ public class MainActivity extends AppCompatActivity {
     public void send_Filled_data(View send_Button){
         Intent send_intent = new Intent(this, DisplayDataActivity.class);
         if(fields_Validations().equals("notEmpty") && check_Box_validations().equals("isChecked")){
+            birth_Date_String_value = datePicker_Object.getText().toString();
             send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
             send_intent.putExtra(EXTRA_MESSAGE_LASTNAME, lastName_Field_validation);
             send_intent.putExtra(EXTRA_MESSAGE_GENDER, gender_string_value);
+            send_intent.putExtra(EXTRA_MESSAGE_BIRTH_DATE, birth_Date_String_value);
 
             startActivity(send_intent);
 
@@ -243,7 +249,9 @@ public class MainActivity extends AppCompatActivity {
     //TODO:Radio Buttons Validations (Done)
     //TODO: check boxes desactivation when clicked no spinner option is pressed (Done)
     //TODO: Validate at least one lenguage is selected (Done)
-    //TODO: Put a DATA tittle in the second activity
+    //TODO: Put a DATA tittle in the second activity (Done)
+
+    //TODO: get user's birth date
     //TODO:Clear screen
     //TODO: change application color
     //TODO: change application text size
