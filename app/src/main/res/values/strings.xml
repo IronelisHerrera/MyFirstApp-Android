@@ -18,5 +18,6 @@
     <string name="Clear">LIMPIAR</string>
     <string name="select_datepicker">seleccionar fecha...</string>
     <string name="hello">Hola, mi nombre es:</string>
+    <string name="say_hi">Hola, mi nombre es:</string>
 
 </resources>

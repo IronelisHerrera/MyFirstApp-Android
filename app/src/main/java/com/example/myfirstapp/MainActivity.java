@@ -23,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
     //onSend click
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
+    public static TextView gender_view_value;
+    public static String gender_string_value;
+    public static String name_Field_validation;
+    public static String lastName_Field_validation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,25 +70,29 @@ public class MainActivity extends AppCompatActivity {
         gender = findViewById(R.id.spinner);
 
     }
+
     public String fields_Validations(){
-        String gender_string_value = gender.getSelectedItem().toString();
-        System.out.println(gender_string_value);
+        //Accesing to the erro method
+        gender_view_value = (TextView) gender.getSelectedView();
+        gender_string_value = gender.getSelectedItem().toString();
+        //System.out.println(gender_string_value);
 
         String status = "notEmpty";
-        String name_Field_validation = name_Field.getText().toString().trim();
-        String lastName_Field_validation = lastName_Field.getText().toString().trim();
+        name_Field_validation = name_Field.getText().toString();
+        lastName_Field_validation = lastName_Field.getText().toString();
 
         if(TextUtils.isEmpty(name_Field_validation)){
             name_Field.setError("Este campo no puede estar vacío. Favor llenar el campo");
-            return status="Empty";
+            status="Empty";
         }
         if (TextUtils.isEmpty(lastName_Field_validation)){
-            name_Field.setError("Este campo no puede estar vacío. Favor llenar el campo");
-            return status="Empty";
+            lastName_Field.setError("Este campo no puede estar vacío. Favor llenar el campo");
+            status="Empty";
         }
         if (!gender_string_value.equalsIgnoreCase("masculino") & !gender_string_value.equalsIgnoreCase("femenino")){
-            name_Field.setError("Favor seleccionar un género");
-            return status="Empty";
+            gender_view_value.setError(" ");
+            gender_view_value.setText("Seleccione género");
+            status="Empty";
         }
         return status;
     }
@@ -91,9 +100,16 @@ public class MainActivity extends AppCompatActivity {
     //Send filled information to a second activity
     public void send_Filled_data(View send_Button){
         Intent send_intent = new Intent(this, DisplayDataActivity.class);
-        String get_Namefield_Value =name_Field.getText().toString();
-        send_intent.putExtra(EXTRA_MESSAGE,get_Namefield_Value );
-        startActivity(send_intent);
+        //String get_Namefield_Value =name_Field.getText().toString();
+        if(fields_Validations().equals("notEmpty")){
+            send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
+            startActivity(send_intent);
+        }
+        else if(fields_Validations().equals("Empty")){
+            Toast.makeText(this, "Inválido", Toast.LENGTH_SHORT).show();
+
+        }
+
 
     }
 
