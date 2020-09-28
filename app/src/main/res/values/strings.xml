@@ -17,5 +17,6 @@
     <string name="Send">ENVIAR</string>
     <string name="Clear">LIMPIAR</string>
     <string name="select_datepicker">seleccionar fecha...</string>
+    <string name="hello">Hola, mi nombre es:</string>
 
 </resources>
