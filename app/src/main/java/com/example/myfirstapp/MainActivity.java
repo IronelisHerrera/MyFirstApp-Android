@@ -1,8 +1,10 @@
 package com.example.myfirstapp;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.text.TextUtils;
+import android.view.Display;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +17,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView datePicker_Object;
     private DatePickerDialog.OnDateSetListener datePicker_Dialog;
     //validations variables
-    EditText name_Field, lastName_Field;
+    public static EditText name_Field, lastName_Field;
     public static Spinner gender;
+
+    //onSend click
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
 
     @Override
@@ -63,10 +68,11 @@ public class MainActivity extends AppCompatActivity {
     public String fields_Validations(){
         String gender_string_value = gender.getSelectedItem().toString();
         System.out.println(gender_string_value);
+
         String status = "notEmpty";
         String name_Field_validation = name_Field.getText().toString().trim();
         String lastName_Field_validation = lastName_Field.getText().toString().trim();
-        //String gender_Field_validation = gender.getSelectedItem("");
+
         if(TextUtils.isEmpty(name_Field_validation)){
             name_Field.setError("Este campo no puede estar vacío. Favor llenar el campo");
             return status="Empty";
@@ -81,6 +87,16 @@ public class MainActivity extends AppCompatActivity {
         }
         return status;
     }
+
+    //Send filled information to a second activity
+    public void send_Filled_data(View send_Button){
+        Intent send_intent = new Intent(this, DisplayDataActivity.class);
+        String get_Namefield_Value =name_Field.getText().toString();
+        send_intent.putExtra(EXTRA_MESSAGE,get_Namefield_Value );
+        startActivity(send_intent);
+
+    }
+
 
     //TODO:Send Button action
     //TODO:Clear screen
