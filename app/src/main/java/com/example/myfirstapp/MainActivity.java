@@ -36,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
     public static String gender_string_value;
     public static String name_Field_validation;
     public static String lastName_Field_validation;
+    public static boolean yes_Final_value;
+    public static boolean java_Final_value;
+    public static boolean python_Final_value;
+    public static boolean js_Final_value;
+    public static boolean golang_Final_value;
+    public static boolean c_Plus_final_Value;
+    public static boolean c_Sharp_final_Value;
+    public static String  check_Box_actual_Value;
 
 
     @Override
@@ -125,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
         gender_view_value = (TextView) gender.getSelectedView();
         //Accesing to the string value of the selected opcion in the spinner
         gender_string_value = gender.getSelectedItem().toString();
+        //Accesing checkboxes final value
+        yes_Final_value = yes_Radio_button.isChecked();
+
 
         String status = "notEmpty";
         name_Field_validation = name_Field.getText().toString();
@@ -143,17 +154,54 @@ public class MainActivity extends AppCompatActivity {
             gender_view_value.setText("Seleccione género");
             status="Empty";
         }
+
         return status;
     }
+    public String check_Box_validations(){
+        java_Final_value = java_Option_checkBox.isChecked();
+        python_Final_value = python_Option_checkBox.isChecked();
+        js_Final_value = js_Option_checkBox.isChecked();
+        golang_Final_value = golang_Option_checkBox.isChecked();
+        c_Plus_final_Value = c_Plus_option_CheckBox.isChecked();
+        c_Sharp_final_Value = c_Sharp_option_checkBox.isChecked();
+
+        check_Box_actual_Value = "notChecked";
+
+        //ckeck if there are at leat one programming language
+
+        if(java_Final_value){
+            check_Box_actual_Value = "isChecked";
+        }
+        if(python_Final_value){
+            check_Box_actual_Value = "isChecked";
+        }
+        if(js_Final_value){
+            check_Box_actual_Value = "isChecked";
+        }
+        if(golang_Final_value){
+            check_Box_actual_Value = "isChecked";
+        }
+        if(c_Plus_final_Value){
+            check_Box_actual_Value = "isChecked";
+        }
+        if(c_Sharp_final_Value){
+            check_Box_actual_Value = "isChecked";
+        }
+
+        return check_Box_actual_Value;
+
+
+    }
+
 
     //Send filled information to a second activity
     public void send_Filled_data(View send_Button){
         Intent send_intent = new Intent(this, DisplayDataActivity.class);
-        if(fields_Validations().equals("notEmpty")){
+        if(fields_Validations().equals("notEmpty") && check_Box_validations().equals("isChecked")){
             send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
             startActivity(send_intent);
         }
-        else if(fields_Validations().equals("Empty")){
+        else if(fields_Validations().equals("Empty") || check_Box_validations().equals("notChecked") ){
             Toast.makeText(this, "Inválido", Toast.LENGTH_SHORT).show();
 
         }
@@ -183,13 +231,12 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-
     }
 
 
-    //TODO:Radio Buttons Validations (In process)
-    //TODO: check boxes desactivation when clicked no spinner option is pressed
+    //TODO:Radio Buttons Validations (Done)
+    //TODO: check boxes desactivation when clicked no spinner option is pressed (Done)
+    //TODO: Validate at least one lenguage is selected
     //TODO:Clear screen
     //TODO: change application color
     //TODO: change application text size
