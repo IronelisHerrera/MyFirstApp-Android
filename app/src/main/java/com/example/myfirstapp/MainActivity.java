@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     //onSend click
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    public static final String EXTRA_MESSAGE_LASTNAME = "lastName";
+    public static final String EXTRA_MESSAGE_GENDER = "Gender";
 
     public static TextView gender_view_value;
     public static String gender_string_value;
@@ -199,7 +201,11 @@ public class MainActivity extends AppCompatActivity {
         Intent send_intent = new Intent(this, DisplayDataActivity.class);
         if(fields_Validations().equals("notEmpty") && check_Box_validations().equals("isChecked")){
             send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
+            send_intent.putExtra(EXTRA_MESSAGE_LASTNAME, lastName_Field_validation);
+            send_intent.putExtra(EXTRA_MESSAGE_GENDER, gender_string_value);
+
             startActivity(send_intent);
+
         }
         else if(fields_Validations().equals("Empty") || check_Box_validations().equals("notChecked") ){
             Toast.makeText(this, "Inválido", Toast.LENGTH_SHORT).show();
@@ -236,7 +242,8 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO:Radio Buttons Validations (Done)
     //TODO: check boxes desactivation when clicked no spinner option is pressed (Done)
-    //TODO: Validate at least one lenguage is selected
+    //TODO: Validate at least one lenguage is selected (Done)
+    //TODO: Put a DATA tittle in the second activity
     //TODO:Clear screen
     //TODO: change application color
     //TODO: change application text size

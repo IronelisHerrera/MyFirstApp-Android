@@ -8,6 +8,9 @@ import android.os.Bundle;
 public class DisplayDataActivity extends AppCompatActivity {
 
     TextView name_Sended_value;
+    TextView lastName_Sended_value;
+    TextView gender_Sended_value;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,11 +18,19 @@ public class DisplayDataActivity extends AppCompatActivity {
 
         //get the intent that started this activity
         Intent get_intent = getIntent();
+        //Intent get_LastName_intent = getIntent();
         String get_name = get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String get_lastName = get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE_LASTNAME );
+        String get_gender = get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE_GENDER);
 
-        //find the object to place the data
+        //find the object to place the data and then asign the value
         name_Sended_value = findViewById(R.id.name_sended);
         name_Sended_value.setText(get_name);
+        lastName_Sended_value = findViewById(R.id.name_sended2);
+        lastName_Sended_value.setText(get_lastName);
+        gender_Sended_value = findViewById(R.id.gender_sended);
+        gender_Sended_value.setText(get_gender);
+
 
     }
 
