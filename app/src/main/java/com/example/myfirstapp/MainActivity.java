@@ -3,7 +3,6 @@ package com.example.myfirstapp;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
@@ -110,13 +109,10 @@ public class MainActivity extends AppCompatActivity {
         c_Sharp_option_checkBox = findViewById(R.id.c_Sharp_checkBox);
         clear_Button = findViewById(R.id.clear_btn);
 
-//        if(!yes_Radio_button.isChecked()){
-//            yes_Radio_button.setChecked(true);
-//        }
       if(gender.getSelectedItem().toString().equals("Seleccionar")){
           gender.setSelection(1);
       }
-        no_Radio_button.setOnClickListener(new View.OnClickListener() {
+      no_Radio_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(no_Radio_button.isChecked()){
@@ -128,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     c_Sharp_option_checkBox.setEnabled(false);
                 }
             }
-        });
+      });
       yes_Radio_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,10 +138,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
       });
-       //Clear function event
+
+    //Clear function event
      clear_function();
-
-
 
     }
 
@@ -154,8 +149,6 @@ public class MainActivity extends AppCompatActivity {
         gender_view_value = (TextView) gender.getSelectedView();
         //Accesing to the string value of the selected opcion in the spinner
         gender_string_value = gender.getSelectedItem().toString();
-
-
         //Accesing checkboxes final value
         yes_Final_value = yes_Radio_button.isChecked();
 
@@ -271,7 +264,6 @@ public class MainActivity extends AppCompatActivity {
             send_intent.putExtra(EXTRA_MESSAGE_PROGRAMMING, yesOrno_Final_value_string );
             send_intent.putExtra(EXTRA_MESSAGE_PROGRAMMING_LANGUAGES, selected_Languages);
 
-
             startActivity(send_intent);
 
         }
@@ -281,7 +273,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     public void change_Values_radios(View change_Value_Rb){
         if(yes_Radio_button.isChecked()){
             no_Radio_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -328,15 +319,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     //TODO:Radio Buttons Validations (Done)
     //TODO: check boxes desactivation when clicked no spinner option is pressed (Done)
     //TODO: Validate at least one lenguage is selected (Done)
     //TODO: Put a DATA tittle in the second activity (Done)
 
-    //TODO: get user's birth date
-    //TODO:Clear screen
+    //TODO: get user's birth date - Done
+    //TODO:Clear screen - Done
     //TODO: change application color
     //TODO: change application text size
 

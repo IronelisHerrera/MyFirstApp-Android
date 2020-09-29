@@ -15,7 +15,7 @@
             android:layout_marginRight="168dp" android:layout_marginEnd="168dp"
             android:layout_marginLeft="40dp" android:layout_marginStart="40dp"
             app:layout_constraintStart_toEndOf="@+id/user_Name" android:layout_marginTop="28dp"
-            app:layout_constraintTop_toBottomOf="@+id/data_Tittle"/>
+            app:layout_constraintTop_toBottomOf="@+id/data_Tittle" android:textColor="@android:color/background_dark"/>
     <TextView
             android:layout_width="130dp"
             android:layout_height="16dp"
@@ -24,7 +24,8 @@
             android:layout_marginRight="168dp" android:layout_marginEnd="168dp"
             android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/name_sended" android:layout_marginLeft="44dp"
-            android:layout_marginStart="44dp" app:layout_constraintStart_toEndOf="@+id/user_LastName"/>
+            android:layout_marginStart="44dp" app:layout_constraintStart_toEndOf="@+id/user_LastName"
+            android:textColor="@android:color/background_dark"/>
     <TextView
             android:layout_width="79dp"
             android:layout_height="21dp"
@@ -33,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@+id/name_sended2"
             android:layout_marginLeft="27dp" android:layout_marginStart="27dp"
             app:layout_constraintStart_toEndOf="@+id/user_gender"
-    />
+            android:textColor="@android:color/background_dark"/>
     <TextView
             android:layout_width="82dp"
             android:layout_height="18dp"
@@ -42,14 +43,15 @@
             app:layout_constraintStart_toEndOf="@+id/birth_Value" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/gender_sended"
             android:layout_marginEnd="166dp" android:layout_marginRight="166dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" android:textColor="@android:color/background_dark"/>
     <TextView
             android:layout_width="82dp"
             android:layout_height="18dp"
             android:id="@+id/programming_status"
             android:layout_marginLeft="14dp" android:layout_marginStart="14dp"
             app:layout_constraintStart_toEndOf="@+id/user_Name3" android:layout_marginTop="28dp"
-            app:layout_constraintTop_toBottomOf="@+id/data_Tittle_likes"/>
+            app:layout_constraintTop_toBottomOf="@+id/data_Tittle_likes"
+            android:textColor="@android:color/background_dark"/>
     <TextView
             android:layout_width="293dp"
             android:layout_height="258dp"
@@ -59,13 +61,15 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="96dp"
             android:layout_marginRight="96dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginStart="22dp" app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="@android:color/background_dark"/>
     <TextView
             android:text="@string/Data_tittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp" android:id="@+id/data_Tittle" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            android:textColor="@color/colorAccent" android:textStyle="bold"/>
     <TextView
             android:text="@string/user_Title_likes"
             android:layout_width="wrap_content"
@@ -73,42 +77,48 @@
             android:id="@+id/data_Tittle_likes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="50dp"
-            app:layout_constraintTop_toBottomOf="@+id/birth_Value"/>
+            app:layout_constraintTop_toBottomOf="@+id/birth_Value" android:textColor="@color/colorAccent"
+            android:textStyle="bold"/>
     <TextView
             android:text="@string/user_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/user_Name"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="63dp"/>
+            android:layout_marginTop="63dp" android:textColor="@android:color/background_dark"
+            android:textStyle="bold"/>
     <TextView
             android:text="@string/user_preferences"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/user_Name3"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginTop="97dp"
-            app:layout_constraintTop_toBottomOf="@+id/birth_Value"/>
+            app:layout_constraintTop_toBottomOf="@+id/birth_Value" android:textColor="@android:color/background_dark"
+            android:textStyle="bold"/>
     <TextView
             android:text="@string/favorite_programming_languages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/favorite_lenguages"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="20dp" android:layout_marginStart="20dp" android:layout_marginTop="31dp"
-            app:layout_constraintTop_toBottomOf="@+id/user_Name3"/>
+            app:layout_constraintTop_toBottomOf="@+id/user_Name3" android:textStyle="bold"
+            android:textColor="@android:color/background_dark"/>
     <TextView
             android:text="@string/user_LastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/user_LastName"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/user_Name"/>
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/user_Name"
+            android:textColor="@android:color/background_dark" android:textStyle="bold"/>
     <TextView
             android:text="@string/user_Gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/user_gender"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/user_LastName"/>
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/user_LastName"
+            android:textColor="@android:color/background_dark" android:textStyle="bold"/>
     <TextView
             android:text="@string/birth_Date"
             android:layout_width="122dp"
@@ -116,5 +126,5 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/gender_sended"
-    />
+            android:textColor="@android:color/background_dark" android:textStyle="bold"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

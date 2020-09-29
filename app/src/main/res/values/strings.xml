@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">My first App</string>
-    <string name="place_name">Digite un nombre...</string>
-    <string name="place_lastName">Digite un apellido...</string>
-    <string name="genero">Genero:</string>
+    <string name="place_name">Digite un nombre</string>
+    <string name="place_lastName">Digite un apellido</string>
+    <string name="genero">Género:</string>
     <string name="nacimiento">Nacimiento:</string>
     <string name="Q1">Le gusta programar?</string>
     <string name="select_si">Si</string>
@@ -16,7 +16,7 @@
     <string name="c_sharp">C#</string>
     <string name="Send">ENVIAR</string>
     <string name="Clear">LIMPIAR</string>
-    <string name="select_datepicker">seleccionar fecha...</string>
+    <string name="select_datepicker">Seleccionar fecha</string>
     <string name="hello">Hola, mi nombre es:</string>
     <string name="Data_tittle">INFORMACIÓN DE USUARIO</string>
     <string name="user_Name">Nombre:</string>
