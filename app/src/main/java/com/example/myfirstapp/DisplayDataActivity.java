@@ -11,6 +11,7 @@ public class DisplayDataActivity extends AppCompatActivity {
     TextView lastName_Sended_value;
     TextView gender_Sended_value;
     TextView birth_Sended_value;
+    TextView sended_Programming_value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class DisplayDataActivity extends AppCompatActivity {
         String get_lastName = get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE_LASTNAME );
         String get_gender = get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE_GENDER);
         String get_Birth_date = get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE_BIRTH_DATE);
+        String get_Programming_value= get_intent.getStringExtra(MainActivity.EXTRA_MESSAGE_PROGRAMMING);
 
         //find the object to place the data and then asign the value
         name_Sended_value = findViewById(R.id.name_sended);
@@ -34,6 +36,8 @@ public class DisplayDataActivity extends AppCompatActivity {
         gender_Sended_value.setText(get_gender);
         birth_Sended_value = findViewById(R.id.birth_Sended_value);
         birth_Sended_value.setText(get_Birth_date);
+        sended_Programming_value = findViewById(R.id.programming_status);
+        sended_Programming_value.setText(get_Programming_value);
 
 
     }

@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE_LASTNAME = "lastName";
     public static final String EXTRA_MESSAGE_GENDER = "Gender";
     public static final String EXTRA_MESSAGE_BIRTH_DATE = "birthDate";
+    public static final String EXTRA_MESSAGE_PROGRAMMING = "yesOrno";
 
     public static TextView gender_view_value;
     public static String gender_string_value;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public static String lastName_Field_validation;
     public static String birth_Date_String_value;
     public static boolean yes_Final_value;
+    private boolean no_Final_value;
     public static boolean java_Final_value;
     public static boolean python_Final_value;
     public static boolean js_Final_value;
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     public static boolean c_Plus_final_Value;
     public static boolean c_Sharp_final_Value;
     public static String  check_Box_actual_Value;
+    String yesOrno_Final_value_string = " ";
+    String accept_All_config = "false";
 
 
     @Override
@@ -199,21 +204,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public String accept_All_user_Configuration(){
+
+        if(no_Radio_button.isChecked()){
+            if(check_Box_validations().equals("notChecked") && fields_Validations().equals("notEmpty")){
+            accept_All_config = "true";
+            }
+        }
+        return accept_All_config;
+            
+    }
 
     //Send filled information to a second activity
     public void send_Filled_data(View send_Button){
         Intent send_intent = new Intent(this, DisplayDataActivity.class);
-        if(fields_Validations().equals("notEmpty") && check_Box_validations().equals("isChecked")){
+        if(fields_Validations().equals("notEmpty") && check_Box_validations().equals("isChecked") || accept_All_user_Configuration().equals("true")){
+
             birth_Date_String_value = datePicker_Object.getText().toString();
+            yes_Final_value = yes_Radio_button.isChecked();
+            no_Final_value = no_Radio_button.isChecked();
+            if(yes_Final_value){
+                yesOrno_Final_value_string = "Sí";
+            }
+            if (no_Final_value){
+                yesOrno_Final_value_string = "No";
+            }
             send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
             send_intent.putExtra(EXTRA_MESSAGE_LASTNAME, lastName_Field_validation);
             send_intent.putExtra(EXTRA_MESSAGE_GENDER, gender_string_value);
             send_intent.putExtra(EXTRA_MESSAGE_BIRTH_DATE, birth_Date_String_value);
+            send_intent.putExtra(EXTRA_MESSAGE_PROGRAMMING, yesOrno_Final_value_string );
+
 
             startActivity(send_intent);
 
         }
-        else if(fields_Validations().equals("Empty") || check_Box_validations().equals("notChecked") ){
+        else if(fields_Validations().equals("Empty") || check_Box_validations().equals("notChecked")){
             Toast.makeText(this, "Inválido", Toast.LENGTH_SHORT).show();
 
         }
