@@ -25,5 +25,6 @@
     <string name="birth_Date">Fecha nacimiento:</string>
     <string name="user_Title_likes">PREFERENCIAS USUARIO</string>
     <string name="user_preferences">Programar:</string>
+    <string name="favorite_programming_languages">Lenguajes de programación favoritos:</string>
 
 </resources>

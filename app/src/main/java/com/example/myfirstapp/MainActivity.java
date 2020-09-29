@@ -10,6 +10,8 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner_Options;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE_GENDER = "Gender";
     public static final String EXTRA_MESSAGE_BIRTH_DATE = "birthDate";
     public static final String EXTRA_MESSAGE_PROGRAMMING = "yesOrno";
+    public static final String EXTRA_MESSAGE_PROGRAMMING_LANGUAGES = "languages";
 
     public static TextView gender_view_value;
     public static String gender_string_value;
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public static String  check_Box_actual_Value;
     String yesOrno_Final_value_string = " ";
     String accept_All_config = "false";
+    ArrayList<String> selected_Languages = new ArrayList<>();
 
 
     @Override
@@ -212,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return accept_All_config;
-            
+
     }
 
     //Send filled information to a second activity
@@ -225,15 +229,39 @@ public class MainActivity extends AppCompatActivity {
             no_Final_value = no_Radio_button.isChecked();
             if(yes_Final_value){
                 yesOrno_Final_value_string = "Sí";
+                //send lenguages
+                if(java_Final_value){
+                    selected_Languages.add("Java");
+                }
+                if(python_Final_value){
+                    selected_Languages.add("Python");
+                }
+                if(js_Final_value){
+                    selected_Languages.add("JavaScript");
+                }
+                if(golang_Final_value){
+                    selected_Languages.add("Golang");
+                }
+                if(c_Plus_final_Value){
+                    selected_Languages.add("C/C++");
+                }
+                if(c_Sharp_final_Value){
+                    selected_Languages.add("C Sharp");
+                }
+
             }
             if (no_Final_value){
                 yesOrno_Final_value_string = "No";
+                selected_Languages.add("Información no proporcionada");
+                selected_Languages.toString().split(" ");
+
             }
             send_intent.putExtra(EXTRA_MESSAGE,name_Field_validation);
             send_intent.putExtra(EXTRA_MESSAGE_LASTNAME, lastName_Field_validation);
             send_intent.putExtra(EXTRA_MESSAGE_GENDER, gender_string_value);
             send_intent.putExtra(EXTRA_MESSAGE_BIRTH_DATE, birth_Date_String_value);
             send_intent.putExtra(EXTRA_MESSAGE_PROGRAMMING, yesOrno_Final_value_string );
+            send_intent.putExtra(EXTRA_MESSAGE_PROGRAMMING_LANGUAGES, selected_Languages);
 
 
             startActivity(send_intent);
