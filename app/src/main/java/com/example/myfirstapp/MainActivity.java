@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public static CheckBox c_Plus_option_CheckBox;
     public static CheckBox c_Sharp_option_checkBox;
 
+
     //onSend click
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE_LASTNAME = "lastName";
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public static String  check_Box_actual_Value;
     String yesOrno_Final_value_string = " ";
     String accept_All_config = "false";
+    Button clear_Button;
     ArrayList<String> selected_Languages = new ArrayList<>();
 
 
@@ -106,10 +108,14 @@ public class MainActivity extends AppCompatActivity {
         golang_Option_checkBox = findViewById(R.id.golangCheckBox);
         c_Plus_option_CheckBox = findViewById(R.id.c_Plus_checkBox);
         c_Sharp_option_checkBox = findViewById(R.id.c_Sharp_checkBox);
+        clear_Button = findViewById(R.id.clear_btn);
 
-        if(!yes_Radio_button.isChecked()){
-            yes_Radio_button.setChecked(true);
-        }
+//        if(!yes_Radio_button.isChecked()){
+//            yes_Radio_button.setChecked(true);
+//        }
+      if(gender.getSelectedItem().toString().equals("Seleccionar")){
+          gender.setSelection(1);
+      }
         no_Radio_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        yes_Radio_button.setOnClickListener(new View.OnClickListener() {
+      yes_Radio_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(yes_Radio_button.isChecked()){
@@ -135,7 +141,9 @@ public class MainActivity extends AppCompatActivity {
                     c_Sharp_option_checkBox.setEnabled(true);
                 }
             }
-        });
+      });
+       //Clear function event
+     clear_function();
 
 
 
@@ -298,6 +306,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void clear_function(){
+        clear_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name_Field.setText("");
+                lastName_Field.setText("");
+                gender.setSelection(0);
+                datePicker_Object.setText("Seleccionar fecha...");
+                yes_Radio_button.setChecked(true);
+                no_Radio_button.setChecked(false);
+                java_Option_checkBox.setChecked(false);
+                python_Option_checkBox.setChecked(false);
+                js_Option_checkBox.setChecked(false);
+                golang_Option_checkBox.setChecked(false);
+                c_Plus_option_CheckBox.setChecked(false);
+                c_Sharp_option_checkBox.setChecked(false);
+
+            }
+        });
+    }
+
+
 
 
     //TODO:Radio Buttons Validations (Done)
